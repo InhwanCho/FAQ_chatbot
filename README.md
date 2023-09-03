@@ -1,9 +1,38 @@
-# FAQ_chatbot
+# FAQ_chatbot(Streamlit & Slack version)
 
 
+## Streamlit version 실행 방법
+
+1. 환경 설정
+```python
+pip install -r requirements.txt
+```
+2. API KEY 설정
+
+  .env 파일을 설정하거나
+  os.environ으로 설정해주세요
+
+3. 실행
+```
+streamlit run main.py
+```
+
+## Slack version 실행 방법
+
+1. 환경 설정
+
+2. API KEY 설정
+
+3. 실행
+```
+python slack.py
+```
+4. 슬랙 실행 후 워크스페이스의 채널 확인
 
 
-## 슬랙(Slack) 설정
+## 슬랙(Slack) 상세 설정
+
+- 슬랙은 csv, json파일을 'vector'로 만들어서 코사인 유사도를 이용하여 출력하는 형태의 `vectordb`를 이용하였습니다.
 
 1. 슬랙에 로그인하여 워크스패이스를 만들기
 
