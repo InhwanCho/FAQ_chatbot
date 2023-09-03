@@ -16,10 +16,18 @@ pip install -r requirements.txt
 ```
 streamlit run main.py
 ```
+
+### 사용 방법
+```
+👻 사용 방법  👻 :
+1. 아래 "질문하기"에 질문을 입력하세요.
+2. FAQ에 대해 질문 하려면 "FAQ 질문"을 눌러주세요.
+3. 질문을 구글링하려면 "구글링 하기"를 눌러주세요.
+```
+
 ## 실행
 
 실행 화면
-<img width="600" alt="실행 화면" src="https://github.com/InhwanCho/FAQ_chatbot/assets/111936229/94e1dc18-ffd5-4315-876a-e62473d41e04">
 
 
 
