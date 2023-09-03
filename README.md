@@ -16,6 +16,14 @@ pip install -r requirements.txt
 ```
 streamlit run main.py
 ```
+## 실행
+
+실행 화면
+<img width="600" alt="실행 화면" src="https://github.com/InhwanCho/FAQ_chatbot/assets/111936229/94e1dc18-ffd5-4315-876a-e62473d41e04">
+
+
+
+
 
 ## Slack version 실행 방법
 
