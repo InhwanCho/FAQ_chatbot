@@ -5,4 +5,5 @@ dotenv
 streamlit_chat
 streamlit_extras
 streamlit
+google-search-results
 numpy
