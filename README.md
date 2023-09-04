@@ -27,12 +27,19 @@ streamlit run main.py
 
 ## 실행
 
-실행 화면
+#### 실행 화면
 <img width="700" alt="메인 화면" src="https://github.com/InhwanCho/FAQ_chatbot/assets/111936229/570ce96b-b945-4c5f-a2d4-94e90773d6d2">
+
+#### Toggle을 내려서 상세 내용들 확인
 <img width="700" alt="아이디" src="https://github.com/InhwanCho/FAQ_chatbot/assets/111936229/c877d5c3-82da-41f4-a406-ebbcab8f0cf8">
+<br>
 <img width="700" alt="이메일" src="https://github.com/InhwanCho/FAQ_chatbot/assets/111936229/f24a74fb-de73-401c-936e-de0fab3b7ce1">
+
+#### 아이디와 등록 이메일 확인하는 방법 물어보기
 <img width="700" alt="id+email" src="https://github.com/InhwanCho/FAQ_chatbot/assets/111936229/555788f1-e93f-4a0e-9da6-1964bbbb4367">
 
+#### FAQ에 없는 질문에 대한 답변 예시
+<img width="700" alt="인터넷 연결 상태(봇, 구글)" src="https://github.com/InhwanCho/FAQ_chatbot/assets/111936229/a5c410f1-c6b1-440a-a654-698ad756f7b0">
 
 
 
