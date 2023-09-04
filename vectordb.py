@@ -4,6 +4,9 @@ import openai
 import numpy as np
 from pprint import pprint
 import json
+from numpy.linalg import norm
+
+# slack.py가 아닌 vectordb.py를 테스트 시 필요
 openai.api_key = "sk-..."
 
 
@@ -41,8 +44,10 @@ def get_embedding(content, model='text-embedding-ada-002'):
     return vector
 
 
+
+#코사인유사도
 def similarity(v1, v2):  # return dot product of two vectors
-    return np.dot(v1, v2)
+    return np.dot(v1, v2)/(norm(v1)*norm(v2))
 
 
 def search(vector, db):
