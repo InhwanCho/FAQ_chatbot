@@ -60,6 +60,10 @@ python slack.py
 ```
 4. 슬랙 실행 후 `워크스페이스의 채널` 확인
 
+### Slack version 실행 결과
+
+<img width="500" alt="Slack" src="https://github.com/InhwanCho/FAQ_chatbot/assets/111936229/0b75c16e-86e4-4a86-b752-d5eb2f4a731f">
+
 
 ## 슬랙(Slack) 상세 설정
 
@@ -106,6 +110,8 @@ python slack.py
 11. 다음과 같은 결과를 얻을 수 있습니다.
 
 <img width="500" alt="Slack" src="https://github.com/InhwanCho/FAQ_chatbot/assets/111936229/0b75c16e-86e4-4a86-b752-d5eb2f4a731f">
+
+<br>
 
 
 </div>
