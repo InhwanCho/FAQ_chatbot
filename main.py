@@ -14,7 +14,7 @@ def init():
 
     # 페이지 세팅
     st.set_page_config(
-        page_title="FAQ Site",
+        page_title="FAQ Chatbot",
         page_icon="🦈"
     )
 
@@ -32,7 +32,7 @@ def faq():
                 "number": 1,
                 "question": "비밀번호를 5회 이상 틀렸어요",
                 "answer": "1. aaa<br>2. bbb<br>3. ccc", ...  }'''
-
+    # 테스트용으로 {"number": 7}은 추가 작성
     examples = {
     "FAQ": [
         {
@@ -64,32 +64,48 @@ def faq():
             "number": 6,
             "question": "로그인이 되지 않아요",
             "answer": "1. 인터넷 연결 상태를 확인해주세요.<br>2. ID와 패스워드를 정확히 입력했는지 확인해주세요.<br>3. 로그인 시도 횟수를 확인하고 일시적인 장애일 수도 있으니 잠시 후에 시도해주세요."
-        }
+        },
+        {
+            "number": 7,
+            "question": "아이디에 등록된 이메일이 생각나지 않아요",
+            "answer": "1. 로그인 화면에서 '비밀번호 찾기' 링크를 클릭합니다.<br>2. 등록한 아이디를 입력하고 '확인' 버튼을 클릭합니다.<br>3. 등록된 이메일 주소로 안내 메일이 발송되며, 해당 이메일을 확인하세요."
+        },
     ]}
+    # 아이디가 생각나지 않아요, 아이디 복구를 위한 이메일 주소도 생각나지 않아요, 위의 질문에 대한 답변들을 합쳐서 제공해주세요.
+
+
+
 
     return examples
-            
+
+        
 
 def main():
     init()
-    st.write('<style>div.st-bf{flex-direction:column;} div.st-ag{font-weight:bold;padding-left:2px;}</style>', unsafe_allow_html=True)
+
 
     st.header('FAQs about login')
     st.info('👻 사용 방법  👻 : \n1. 아래 "질문하기"에 질문을 입력하세요.\n2. FAQ에 대해 질문 하려면 "FAQ 질문"을 눌러주세요.\n3. 질문을 구글링하려면 "구글링 하기"를 눌러주세요.')
-    ex_faq = faq()
 
+    # FAQ 데이터
+    ex_faq = faq()
     for i in ex_faq['FAQ']:
         stoggle(f"Q{i['number']} : {i['question']}",i['answer'])
 
-    chat = ChatOpenAI(temperature=0.1,max_tokens=512,model='gpt-3.5-turbo')
+    # Chatbot 모델 선택
+    chat = ChatOpenAI(temperature=0.1,max_tokens=512,model='gpt-4')
 
+    # 메시지 세션 활성화(초기화) 및 챗봇의 역할 부여
+    text = f"""당신은 {ex_faq}에 답변해주는 챗봇입니다. 질문에 대해서 {ex_faq}만 참고하여 답변해주세요. 답변 할 수 없는 질문이면 확인 할 수 없다고 말해주세요."""
     if "messages" not in st.session_state:
         st.session_state.messages = [
-            SystemMessage(content=f"당신은 {ex_faq}에 답변해주는 챗봇입니다. 질문에 대해서 {ex_faq}만 참고하여 답변해주세요. 답변 할 수 없는 질문이면 확인 할 수 없다고 말해줘")
+            SystemMessage(content=text)
         ]
         st.session_state.users = []
 
     # 챗봇 질문할 경우 활성화
+    # 질문 입력 후 FAQ질문 or 구글링 버튼 생성
+    # 버튼의 위치 UI를 위한 레이아웃 변경
     with st.form('chat_input_form', clear_on_submit=True):
         col1, col2, col3 = st.columns([7,1,1.2]) 
         instr = 'Hi there! Enter what you want to let me know here.'
@@ -113,39 +129,44 @@ def main():
         # AI답변
         st.session_state.messages.append(AIMessage(content=response.content))
         st.session_state.users.append('chatbot')
-    
+
+    # serpapi를 활용하기 위한 포맷 작성
     if user_input and serpapi :
-        # serpapi를 활용하기 위한 포맷 작성
-        llm = OpenAI(temperature=0,max_tokens=512)
+        llm = OpenAI(temperature=0.1,max_tokens=512)
         tool_names = ["serpapi"]
         tools = load_tools(tool_names)
         agent = initialize_agent(tools, llm, agent="zero-shot-react-description", verbose=True)
         # 유저 질문
-        st.session_state.messages.append(user_input)
-        st.session_state.users.append('serpapi_user')
+        st.session_state.messages.append(HumanMessage(content=''))
+        st.session_state.users.append('serpapi_user:'+user_input)
+
         with st.spinner("Thinking..."):
             # serpapi 답변
+            # response = 'Windows 10을 사용하면 시작 버튼을 누른 다음 설정을 입력하여 설정 > 네트워크 및 인터넷을 선택하면 네트워크 연결 상태가 상단에 표시됩니다.'
             response = agent.run(user_input)
-        st.session_state.messages.append(response)
-        st.session_state.users.append('serpapi_chatbot')
+            st.session_state.messages.append(HumanMessage(content=''))
+
+            st.session_state.users.append('serpapi_chatbot:'+response)
+            
+                
 
 
 
     messages = st.session_state.get('messages', [])
     users = st.session_state.users
 
+    # 챗봇의 메시지 출력 포맷을 설정
     for i, (user, msg) in enumerate(zip(users,messages[1:])):
         if user == 'skip':
             continue
-        elif user == 'chatbot':
-            message(msg.content, is_user=False, key=str(i)+'_ai')
         elif user == 'user' :
             message(msg.content, is_user=True, key=str(i)+'_user')
-        elif user == 'serpapi_user':
-            message(msg, is_user = True, key=str(i)+'_user')
-        elif user == 'serpapi_chatbot':
-            message(msg, is_user=False, key=str(i)+'_ai')
-
+        elif user == 'chatbot':
+            message(msg.content, is_user=False, key=str(i)+'_ai')
+        elif user.startswith('serpapi_user'):
+            message('google : ' + user[13:], is_user = True, key=str(i)+'_user')
+        elif user.startswith('serpapi_chatbot'):
+            message('google : ' + user[16:], is_user=False, key=str(i)+'_ai')
     
 
 
