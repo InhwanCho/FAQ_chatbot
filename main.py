@@ -93,7 +93,7 @@ def main():
         stoggle(f"Q{i['number']} : {i['question']}",i['answer'])
 
     # Chatbot 모델 선택
-    chat = ChatOpenAI(temperature=0.1,max_tokens=512,model='gpt-4')
+    chat = ChatOpenAI(temperature=0.1,max_tokens=512,model='gpt-3.5-turbo')
 
     # 메시지 세션 활성화(초기화) 및 챗봇의 역할 부여
     text = f"""당신은 {ex_faq}에 답변해주는 챗봇입니다. 질문에 대해서 {ex_faq}만 참고하여 답변해주세요. 답변 할 수 없는 질문이면 확인 할 수 없다고 말해주세요."""
@@ -164,12 +164,12 @@ def main():
         elif user == 'chatbot':
             message(msg.content, is_user=False, key=str(i)+'_ai')
         elif user.startswith('serpapi_user'):
-            message('google : ' + user[13:], is_user = True, key=str(i)+'_user')
+            message('Googling : ' + user[13:], is_user = True, key=str(i)+'_user')
         elif user.startswith('serpapi_chatbot'):
-            message('google : ' + user[16:], is_user=False, key=str(i)+'_ai')
+            message('Googling : ' + user[16:], is_user=False, key=str(i)+'_ai')
     
 
 
 if __name__ == '__main__':
     main()
-    
+
