@@ -28,6 +28,11 @@ streamlit run main.py
 ## 실행
 
 실행 화면
+<img width="700" alt="메인 화면" src="https://github.com/InhwanCho/FAQ_chatbot/assets/111936229/570ce96b-b945-4c5f-a2d4-94e90773d6d2">
+<img width="700" alt="아이디" src="https://github.com/InhwanCho/FAQ_chatbot/assets/111936229/c877d5c3-82da-41f4-a406-ebbcab8f0cf8">
+<img width="700" alt="이메일" src="https://github.com/InhwanCho/FAQ_chatbot/assets/111936229/f24a74fb-de73-401c-936e-de0fab3b7ce1">
+<img width="700" alt="id+email" src="https://github.com/InhwanCho/FAQ_chatbot/assets/111936229/555788f1-e93f-4a0e-9da6-1964bbbb4367">
+
 
 
 
