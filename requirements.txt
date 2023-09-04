@@ -5,3 +5,4 @@ dotenv
 streamlit_chat
 streamlit_extras
 streamlit
+numpy
