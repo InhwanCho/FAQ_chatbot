@@ -33,13 +33,16 @@ streamlit run main.py
 #### Toggle을 내려서 상세 내용들 확인
 <img width="700" alt="아이디" src="https://github.com/InhwanCho/FAQ_chatbot/assets/111936229/c877d5c3-82da-41f4-a406-ebbcab8f0cf8">
 <br>
+<br>
 <img width="700" alt="이메일" src="https://github.com/InhwanCho/FAQ_chatbot/assets/111936229/f24a74fb-de73-401c-936e-de0fab3b7ce1">
 
 #### 아이디와 등록 이메일 확인하는 방법 물어보기
 <img width="700" alt="id+email" src="https://github.com/InhwanCho/FAQ_chatbot/assets/111936229/555788f1-e93f-4a0e-9da6-1964bbbb4367">
 
 #### FAQ에 없는 질문에 대한 답변 예시
-<img width="700" alt="인터넷 연결 상태(봇, 구글)" src="https://github.com/InhwanCho/FAQ_chatbot/assets/111936229/a5c410f1-c6b1-440a-a654-698ad756f7b0">
+<img width="700" alt="인터넷 연결 상태(봇, 구글)" src="https://github.com/InhwanCho/FAQ_chatbot/assets/111936229/daecaf3f-5e19-46b1-8980-62ea6436a183">
+
+
 
 
 
@@ -60,7 +63,10 @@ python slack.py
 
 ## 슬랙(Slack) 상세 설정
 
-- 슬랙은 csv, json파일을 'vector'로 만들어서 코사인 유사도를 이용하여 출력하는 형태의 `vectordb`를 이용하였습니다.
+
+
+- 슬랙 버전은 csv, json파일을 'vector'로 만들어서 코사인 유사도를 이용하여 출력하는 형태를 이용하였습니다.
+- `vectordb.py`에서 확인할 수 있습니다.
 
 1. 슬랙에 로그인하여 워크스패이스를 만들기
 
