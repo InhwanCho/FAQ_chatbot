@@ -58,11 +58,14 @@ streamlit run main.py
 ```
 python slack.py
 ```
-4. 슬랙 실행 후 워크스페이스의 채널 확인
+4. 슬랙 실행 후 `워크스페이스의 채널` 확인
 
 
 ## 슬랙(Slack) 상세 설정
 
+<details>
+<summary>### Toggle (눌러서 상세 설정 확인) ###</summary>
+<div markdown="1.2">
 
 
 - 슬랙 버전은 csv, json파일을 'vector'로 만들어서 코사인 유사도를 이용하여 출력하는 형태를 이용하였습니다.
@@ -103,3 +106,7 @@ python slack.py
 11. 다음과 같은 결과를 얻을 수 있습니다.
 
 <img width="500" alt="Slack" src="https://github.com/InhwanCho/FAQ_chatbot/assets/111936229/0b75c16e-86e4-4a86-b752-d5eb2f4a731f">
+
+
+</div>
+</details>
