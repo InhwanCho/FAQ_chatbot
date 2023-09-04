@@ -44,8 +44,8 @@ streamlit run main.py
 
 
 
-
-
+---
+---
 
 
 ## Slack version 실행 방법
